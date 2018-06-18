@@ -1,4 +1,4 @@
 
-**Your weekly digest with the most interesting Swift and Objective-C project from the past 7 days. Find useful tools, inspiration, projects to contribute to.**
+_Your weekly digest full of interesting open source projects in the Apple ecosystem. Find useful tools, inspiration, projects to contribute to._
 
 <!-- Header end -->

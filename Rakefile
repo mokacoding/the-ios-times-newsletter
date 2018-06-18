@@ -31,9 +31,8 @@ end
 def title_temp_file(issue)
   f = Tempfile.open('title')
   begin
-    f.puts '# The iOS Times'
     issue_number = File.basename(issue, '.*').split('-').last.to_i
-    f.puts "## Year #{2015 - Time.now.year + 1} Issue #{issue_number}"
+    f.puts "# The iOS Times - #{issue_number}"
     f.puts "### #{File.basename(issue)[0, 10]}"
   ensure
     f.close
@@ -43,7 +42,8 @@ end
 
 desc "Generate the HTML code for the latest issue, and copy it to the clipboar"
 task :build => [:update] do
-  latest = Dir["#{issues_folder}/*.md"].reject { |f| File.basename(f) == "README.md" }.last
+  latest = Dir["#{issues_folder}/*.md"].reject { |f| File.basename(f) == "README.md" }.sort.last
+  puts latest
   issue = File.open(latest)
   temp_issue = stripped_front_matter_temp_file(issue)
   temp_title = title_temp_file(issue)
